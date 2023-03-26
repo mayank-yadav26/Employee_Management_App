@@ -1,0 +1,5 @@
+package com.mayank.springboot.exception;
+
+public class ResourceNotFoundException {
+
+}

@@ -1,0 +1,5 @@
+package com.mayank.springboot.model;
+
+public class Employee {
+
+}
