@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import EmployeeService from '../services/EmployeeService';
+import { withRouter } from './withRouter';
 
 class ListEmployeeComponent extends Component {
     constructor(props) {
@@ -7,16 +8,24 @@ class ListEmployeeComponent extends Component {
         this.state = {
             employees: []
         }
+        this.addEmployee = this.addEmployee.bind(this);
     }
     componentDidMount() {
         EmployeeService.getEmployees().then((res) => {
             this.setState({ employees: res.data })
         });
     }
+
+    addEmployee(){
+        this.props.navigate('/add-employee');
+    }
     render() {
         return (
             <div>
                 <h2 className='text-center'>Employees List</h2>
+                <div className='row'>
+                    <button className='btn btn-primary' onClick={this.addEmployee}>Add Employee</button>
+                </div>
                 <div className='row'>
                     <table className='table table-striped table-bordered'>
                         <thead>
@@ -46,4 +55,4 @@ class ListEmployeeComponent extends Component {
     }
 }
 
-export default ListEmployeeComponent;
+export default withRouter(ListEmployeeComponent);
